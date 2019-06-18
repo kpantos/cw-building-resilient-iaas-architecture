@@ -42,21 +42,21 @@
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/opsgility/cw-building-resilient-iaas-architecture/master/script-extensions/deploy-cloudshop.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/kpantos/cw-building-resilient-iaas-architecture/master/script-extensions/deploy-cloudshop.ps1"
     },
     "CloudShopDBInstallscriptUrl": {
       "type": "string",
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/opsgility/cw-building-resilient-iaas-architecture/master/script-extensions/deploy-cloudshop-db.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/kpantos/cw-building-resilient-iaas-architecture/master/script-extensions/deploy-cloudshop-db.ps1"
     },
     "SQLConfigscriptUrl": {
       "type": "string",
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/opsgility/cw-building-resilient-iaas-architecture/master/script-extensions/configure-sql.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/kpantos/cw-building-resilient-iaas-architecture/master/script-extensions/configure-sql.ps1"
     },
     "WebVMName": {
       "type": "string",
@@ -175,8 +175,8 @@
           },
           "osDisk": {
             "name": "WebOSDisk",
-            "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName')), '2017-06-01').primaryEndpoints.blob, variables('WebStorageAccountContainerName'), '/', variables('WebOSDiskName'), '.vhd')]"
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -275,8 +275,8 @@
           },
           "osDisk": {
             "name": "SQLOSDisk",
-            "vhd": {
-              "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName')), '2017-06-01').primaryEndpoints.blob, variables('SQLStorageAccountContainerName'), '/', variables('SQLOSDiskName'), '.vhd')]"
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"

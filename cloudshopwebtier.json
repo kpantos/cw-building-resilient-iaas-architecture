@@ -214,9 +214,9 @@
                     },
                     "osDisk": {
                         "name": "WebOSDisk",
-                        "vhd": {
-                            "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName')), '2017-06-01').primaryEndpoints.blob, variables('WebStorageAccountContainerName'), '/', variables('WebOSDiskName'), '.vhd')]"
-                        },
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS"
+                          },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
@@ -363,9 +363,9 @@
                     },
                     "osDisk": {
                         "name": "WebVM-2OSDisk",
-                        "vhd": {
-                            "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName')), '2017-06-01').primaryEndpoints.blob, variables('WebVM-2StorageAccountContainerName'), '/', variables('WebVM-2OSDiskName'), '.vhd')]"
-                        },
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS"
+                          },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
                     }
